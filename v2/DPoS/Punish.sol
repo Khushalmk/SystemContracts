@@ -1,7 +1,8 @@
-pragma solidity >=0.6.0 <0.8.0;
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.17;
 
-import "./Params.sol";
-import "./Validators.sol";
+import "Params.sol";
+import "Validators.sol";
 
 contract Punish is Params {
     uint256 public punishThreshold;
@@ -37,9 +38,9 @@ contract Punish is Params {
 
     function initialize() external onlyNotInitialized {
         validators = Validators(ValidatorContractAddr);
-        punishThreshold = 28800;
-        removeThreshold = 57600;
-        decreaseRate = 24;
+        punishThreshold = 48;
+        removeThreshold = 96;
+        decreaseRate = 48; 
 
         initialized = true;
     }

@@ -1,4 +1,5 @@
-pragma solidity >=0.6.0 <0.8.0;
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.17;
 
 contract Params {
     bool public initialized;
@@ -16,8 +17,21 @@ contract Params {
     // Validator have to wait StakingLockPeriod blocks to withdraw staking
     uint64 public constant StakingLockPeriod = 86400;
     // Validator have to wait WithdrawProfitPeriod blocks to withdraw his profits
-    uint64 public constant WithdrawProfitPeriod = 28800;
+   // uint64 public constant WithdrawProfitPeriod = 28800;
     uint256 public constant MinimalStakingCoin = 32 ether;
+    // minimum initial staking to become a validator
+    uint256 public constant minimumValidatorStaking = 10000 ether;
+
+
+    // percent distrubution of Gas Fee earned by validator 100000 = 100%
+    uint public constant stakerPartPercent = 45000;          //45% 
+    uint public constant validatorPartPercent = 5000;        //5%
+    uint public constant burnPartPercent = 0;                //0%
+    uint public constant contractPartPercent = 50000;        //50%
+    uint public constant burnStopAmount = 100000 ether;      // after 100,000 coins burn, it will stop burning
+    uint public totalBurnt;
+
+
 
     modifier onlyMiner() {
         require(msg.sender == block.coinbase, "Miner only");
